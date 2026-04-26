@@ -28,7 +28,6 @@ export default function Onboarding() {
                 onPress={() => setLang(code)}
               >
                 <Text style={styles.langFlag}>{flag}</Text>
-                <Text style={[styles.langTxt, lang === code && styles.langTxtOn]}>{label}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -75,14 +74,12 @@ const styles = StyleSheet.create({
   logo: { fontSize: 42, fontWeight: '700', color: COLORS.primary, letterSpacing: 2 },
   langRow: { flexDirection: 'row', gap: 6 },
   langBtn: {
-    flexDirection: 'row', alignItems: 'center', gap: 4,
-    paddingHorizontal: 10, paddingVertical: 6, borderRadius: 20,
-    borderWidth: 1.5, borderColor: COLORS.border, backgroundColor: COLORS.surface,
+    width: 40, height: 40, borderRadius: 20,
+    justifyContent: 'center', alignItems: 'center',
+    borderWidth: 2, borderColor: COLORS.border, backgroundColor: COLORS.surface,
   },
-  langBtnOn: { borderColor: COLORS.primary, backgroundColor: COLORS.primaryLight },
-  langFlag:  { fontSize: 16 },
-  langTxt:   { fontSize: 13, fontWeight: '600', color: COLORS.textSecondary },
-  langTxtOn: { color: COLORS.primary },
+  langBtnOn: { borderColor: '#c2622a', backgroundColor: '#c2622a22' },
+  langFlag:  { fontSize: 22 },
 
   slideContainer: { alignItems: 'center', gap: 16 },
   emoji: { fontSize: 80 },
