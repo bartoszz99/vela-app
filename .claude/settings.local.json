@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"require\\('i18n-js'\\); console.log\\('ok'\\)\")",
+      "Bash(node -e \"const {I18n}=require\\('i18n-js'\\);const i=new I18n\\({en:{hi:'Hello'},pl:{hi:'Cześć'}}\\);i.locale='pl';console.log\\(i.t\\('hi'\\)\\)\")",
+      "Bash(node -e \"const pl = require\\('./locales/pl.json'\\); console.log\\('pl keys:', Object.keys\\(pl\\).join\\(', '\\)\\)\")",
+      "Bash(node -e \"const en = require\\('./locales/en.json'\\); console.log\\('en keys:', Object.keys\\(en\\).join\\(', '\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const p=JSON.parse\\(d\\); console.log\\('i18n-js:', p.dependencies['i18n-js']\\); console.log\\('async-storage:', p.dependencies['@react-native-async-storage/async-storage']\\);\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('i18n-js:', p.dependencies['i18n-js']\\); console.log\\('async-storage:', p.dependencies['@react-native-async-storage/async-storage']\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const p=JSON.parse\\(fs.readFileSync\\('/proc/stdin','utf8'\\)\\); console.log\\('main:', p.main\\); console.log\\('module:', p.module\\); console.log\\('exports:', JSON.stringify\\(p.exports, null, 2\\)\\)\")",
+      "Bash(node -p \"const p=require\\('./node_modules/i18n-js/package.json'\\); JSON.stringify\\({main:p.main, module:p.module, exports: p.exports}, null, 2\\)\")",
+      "Bash(timeout 30 npx expo export --platform web)",
+      "Bash(node -p \"Object.keys\\(require\\('./node_modules/i18n-js/package.json'\\).peerDependencies || {}\\)\")",
+      "Bash(npx expo *)",
+      "Bash(kill %1)",
+      "Bash(node -p \"require\\('./package.json'\\).dependencies['expo']\")",
+      "Bash(node -p \"require\\('./package.json'\\).dependencies['@react-native-async-storage/async-storage']\")",
+      "Bash(node -p \"require\\('./package.json'\\).devDependencies\")",
+      "Bash(node -p \"require\\('./node_modules/@react-native-async-storage/async-storage/package.json'\\).version\")",
+      "Bash(node -e \"const en=require\\('./locales/en.json'\\); console.log\\(JSON.stringify\\(en.personalityResult, null, 2\\)\\)\")",
+      "Bash(node -e \"const en=require\\('./locales/en.json'\\); const keys=Object.keys\\(en.personalityResult.types\\); console.log\\('Types in en.json:', keys.join\\(', '\\)\\); console.log\\('Count:', keys.length\\)\")",
+      "Bash(node -e \"const pl=require\\('./locales/pl.json'\\); console.log\\('pl.common:', JSON.stringify\\(pl.common\\)\\); console.log\\('pl.nav:', JSON.stringify\\(pl.nav\\)\\);\")",
+      "Bash(node -e \"const pl=require\\('./locales/pl.json'\\); console.log\\(JSON.stringify\\(pl.profileView, null, 2\\)\\)\")",
+      "Bash(node -e \"const en=require\\('./locales/en.json'\\); console.log\\(JSON.stringify\\(en.profileView, null, 2\\)\\)\")",
+      "Bash(node -e \"const pl=require\\('./locales/pl.json'\\); console.log\\(Object.keys\\(pl\\).join\\(', '\\)\\)\")",
+      "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-image-picker']\")",
+      "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-file-system']\")",
+      "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-image-manipulator']\")"
+    ]
+  }
+}
