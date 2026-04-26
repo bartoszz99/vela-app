@@ -5,10 +5,6 @@ import { COLORS } from '@/constants/colors';
 import { useLang } from '@/contexts/LanguageContext';
 import type { Lang } from '@/lib/i18n';
 
-const LANGS: { code: Lang; label: string }[] = [
-  { code: 'pl', label: 'PL' },
-  { code: 'en', label: 'EN' },
-];
 
 export default function Onboarding() {
   const { t, lang, setLang } = useLang();
@@ -20,17 +16,9 @@ export default function Onboarding() {
         {/* Language picker — top-right */}
         <View style={styles.topBar}>
           <Text style={styles.logo}>Vela</Text>
-          <View style={styles.langRow}>
-            {LANGS.map(({ code, label }) => (
-              <TouchableOpacity
-                key={code}
-                style={[styles.langBtn, lang === code && styles.langBtnOn]}
-                onPress={() => setLang(code)}
-              >
-                <Text style={[styles.langTxt, lang === code && styles.langTxtOn]}>{label}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
+          <TouchableOpacity onPress={() => setLang(lang === 'pl' ? 'en' : 'pl')}>
+            <Text style={styles.langSwitch}>{lang === 'pl' ? 'EN' : 'PL'}</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.slideContainer}>
@@ -72,14 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', alignItems: 'center',
   },
   logo: { fontSize: 42, fontWeight: '700', color: COLORS.primary, letterSpacing: 2 },
-  langRow: { flexDirection: 'row', gap: 6 },
-  langBtn: {
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8,
-    backgroundColor: 'transparent',
-  },
-  langBtnOn: { backgroundColor: '#c2622a' },
-  langTxt:   { fontSize: 14, fontWeight: '400', color: '#a07850' },
-  langTxtOn: { fontWeight: '700', color: '#fff' },
+  langSwitch: { fontSize: 14, fontWeight: '600', color: '#c2622a' },
 
   slideContainer: { alignItems: 'center', gap: 16 },
   emoji: { fontSize: 80 },
