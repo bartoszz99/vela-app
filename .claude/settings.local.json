@@ -28,7 +28,8 @@
       "Bash(node -e \"const pl=require\\('./locales/pl.json'\\); console.log\\(Object.keys\\(pl\\).join\\(', '\\)\\)\")",
       "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-image-picker']\")",
       "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-file-system']\")",
-      "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-image-manipulator']\")"
+      "Bash(node -p \"require\\('./package.json'\\).dependencies['expo-image-manipulator']\")",
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(p.dependencies['expo-localization'] || 'NOT INSTALLED'\\)\")"
     ]
   }
 }

@@ -3,14 +3,36 @@ import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '@/constants/colors';
 import { useLang } from '@/contexts/LanguageContext';
+import type { Lang } from '@/lib/i18n';
+
+const LANGS: { code: Lang; flag: string; label: string }[] = [
+  { code: 'pl', flag: '🇵🇱', label: 'PL' },
+  { code: 'en', flag: '🇬🇧', label: 'EN' },
+];
 
 export default function Onboarding() {
-  const { t } = useLang();
+  const { t, lang, setLang } = useLang();
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.logo}>Vela</Text>
+
+        {/* Language picker — top-right */}
+        <View style={styles.topBar}>
+          <Text style={styles.logo}>Vela</Text>
+          <View style={styles.langRow}>
+            {LANGS.map(({ code, flag, label }) => (
+              <TouchableOpacity
+                key={code}
+                style={[styles.langBtn, lang === code && styles.langBtnOn]}
+                onPress={() => setLang(code)}
+              >
+                <Text style={styles.langFlag}>{flag}</Text>
+                <Text style={[styles.langTxt, lang === code && styles.langTxtOn]}>{label}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
 
         <View style={styles.slideContainer}>
           <Text style={styles.emoji}>{t('onboarding.slide1Emoji')}</Text>
@@ -44,7 +66,24 @@ const styles = StyleSheet.create({
     flex: 1, alignItems: 'center', justifyContent: 'space-between',
     paddingHorizontal: 32, paddingVertical: 24,
   },
+
+  // Top bar: logo left, lang switcher right
+  topBar: {
+    width: '100%', flexDirection: 'row',
+    justifyContent: 'space-between', alignItems: 'center',
+  },
   logo: { fontSize: 42, fontWeight: '700', color: COLORS.primary, letterSpacing: 2 },
+  langRow: { flexDirection: 'row', gap: 6 },
+  langBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
+    paddingHorizontal: 10, paddingVertical: 6, borderRadius: 20,
+    borderWidth: 1.5, borderColor: COLORS.border, backgroundColor: COLORS.surface,
+  },
+  langBtnOn: { borderColor: COLORS.primary, backgroundColor: COLORS.primaryLight },
+  langFlag:  { fontSize: 16 },
+  langTxt:   { fontSize: 13, fontWeight: '600', color: COLORS.textSecondary },
+  langTxtOn: { color: COLORS.primary },
+
   slideContainer: { alignItems: 'center', gap: 16 },
   emoji: { fontSize: 80 },
   title: {
